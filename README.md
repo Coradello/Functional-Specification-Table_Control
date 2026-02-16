@@ -5,7 +5,6 @@ Descrição
 Criar um module pool que permita:
 
 
- 
 1.	Exibir em uma table control os dados de companhias aéreas (SCARR) e suas rotas de voo (SPFLI). Campos a serem exibidos na table control:
 SCARR-CARRID (Companhia aérea)
 SPFLI-CONNID (Conexão de voo)
@@ -13,9 +12,9 @@ SBOOK-FLDATE(Selecionar uma linha para cada data diferente)
 SPFLI-COUNTRYFR 
 SPFLI-CITYFROM               
 SPFLI-AIRPFROM 
-SPFLI-COUNTRYTO 
-SPFLI-CITYTO
-SPFLI-DEPTIME  
+SPFLI-COUNTRYTO. 
+SPFLI-CITYTO.
+SPFLI-DEPTIME.  
 SPFLI-ARRTIME.
 2.	Permitir que o usuário selecione uma linha ou mais da table control
 3.	Ter três botões de ação:
