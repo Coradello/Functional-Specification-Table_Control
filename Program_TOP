@@ -1,1 +1,29 @@
+*&---------------------------------------------------------------------*
+*& Include         ZRELVOO11
+*&---------------------------------------------------------------------*
+TABLES: sbook, spfli, scarr, scustom, sflight.
 
+CONTROLS: TC9004 TYPE TABLEVIEW USING SCREEN 9004.
+
+TYPES: BEGIN OF ty_voos,
+         carrid    TYPE scarr-carrid,
+         connid    TYPE spfli-connid,
+         fldate    TYPE sbook-fldate,
+         carrname  TYPE scarr-carrname,
+         countryfr TYPE spfli-countryfr,
+         cityfrom  TYPE spfli-cityfrom,
+         airpfrom  TYPE spfli-airpfrom,
+         countryto TYPE spfli-countryto,
+         cityto    TYPE spfli-cityto,
+         deptime   TYPE spfli-deptime,
+         arrtime   TYPE spfli-arrtime,
+         mark      TYPE c LENGTH 1,
+       END OF ty_voos.
+
+DATA: it_voos TYPE STANDARD TABLE OF ty_voos,
+      wa_voos TYPE ty_voos,
+      gv_trigger TYPE sy-ucomm,
+      it_selecionadas TYPE STANDARD TABLE OF ty_voos,
+      gv_filtro_atual TYPE scarr-carrname.
+
+FIELD-SYMBOLS: <fs_tab> TYPE ty_voos.
