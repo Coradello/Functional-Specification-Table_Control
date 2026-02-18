@@ -1,0 +1,38 @@
+*&---------------------------------------------------------------------*
+*& Include         ZRELVOO11
+*&---------------------------------------------------------------------*
+
+MODULE TC9004_change_tc_attr OUTPUT.
+  DESCRIBE TABLE it_voos LINES TC9004-lines.
+ENDMODULE.
+
+MODULE clear_wa_voos OUTPUT.
+  clear wa_voos.
+ENDMODULE.
+
+
+DATA gv_last_carrid TYPE scarr-carrid.
+
+MODULE preenche_tb_control OUTPUT.
+
+  IF scarr-carrid IS NOT INITIAL AND scarr-carrid <> gv_last_carrid.
+
+    SELECT a~carrid, b~connid, c~fldate, a~carrname,
+           b~countryfr, b~cityfrom, b~airpfrom,
+           b~countryto, b~cityto, b~deptime, b~arrtime
+      INTO TABLE @it_voos
+      FROM scarr AS a
+      INNER JOIN spfli AS b
+        ON a~carrid = b~carrid
+      INNER JOIN sbook AS c
+        ON b~carrid = c~carrid
+       AND b~connid = c~connid
+
+      WHERE a~carrid = @scarr-carrid.
+
+
+    gv_last_carrid = scarr-carrid.
+
+  ENDIF.
+
+ENDMODULE.
